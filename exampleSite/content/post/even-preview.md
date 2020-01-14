@@ -390,7 +390,7 @@ Dictionary
 :   item 1
 
     item 2
-
+    
     item 3
 
 ## Blocks
@@ -423,6 +423,7 @@ Dictionary
 Assuming guessing is not enabled.
 
 `````
+
 ```
 // Fenced **without** highlighting
 function doIt() {
@@ -433,7 +434,7 @@ function doIt() {
 }
 ```
 
-```javascript
+​```javascript
 // Fenced **with** highlighting
 function doIt() {
     for (var i = 1; i <= slen ; i^^) {
@@ -454,7 +455,7 @@ function doIt() {
 }
 ```
 
-```javascript
+​```javascript
 // Fenced **with** highlighting
 function doIt() {
     for (var i = 1; i <= slen ; i^^) {
@@ -535,7 +536,8 @@ elipsis...
 ## Neseted Fences
 
 ````
-    ```
+
+```
     This will still be parsed
     as a normal indented code block.
     ```
@@ -567,7 +569,7 @@ as a fenced code block.
         > ```
 ````
 
-    ```
+```
     This will still be parsed
     as a normal indented code block.
     ```
