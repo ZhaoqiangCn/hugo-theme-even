@@ -70,6 +70,7 @@
 
 <!-- custom css -->
 {{ range .Site.Params.customCSS -}}
+<link rel="stylesheet" href="{{ "/css/search.css" | relURL }}" />
 <link rel="stylesheet" href="{{ "/css/" | relURL }}{{ . }}">
 {{ end }}
 
