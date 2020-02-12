@@ -71,12 +71,6 @@
 <!-- custom css -->
 {{ range .Site.Params.customCSS -}}
 <link rel="stylesheet" href="{{ "/css/" | relURL }}{{ . }}">
-
-{{ $res := resources.Get "css/search.css" | resources.Minify -}}
-<link rel="stylesheet" href="{{ $res.RelPermalink }}">
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
-
 {{ end }}
 
 {{/* NOTE: These Hugo Internal Templates can be found starting at https://github.com/spf13/hugo/blob/master/tpl/tplimpl/template_embedded.go#L158 */}}
