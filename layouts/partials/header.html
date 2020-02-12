@@ -8,6 +8,52 @@
   </a>
 </div>
 
+<div class="navbar-menu">
+            {{ $currentPage := . }}
+            {{ range .Site.Menus.main }}
+            <a class="menu-item{{ if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) | or (eq $currentPage.RelPermalink .URL) }} active{{ end }}"
+                href="{{ .URL | absLangURL }}" title="{{ .Title }}">{{ .Name | safeHTML }}</a>
+            {{ end }}
+            <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
+            <!-- 添加的代码 -->
+            <a href="#ex1" rel="modal:open"><i class="fas fa-search fa-fw"></i></a>
+            <!-- 添加代码结束 -->
+        </div>
+		
+{{- if .Site.Params.Search.Enable }}
+<link href="{{"lib/search/auto-complete.css" | relURL}}" rel="stylesheet">
+<div class="search-wrapper">
+  <div class="searchbox">
+    <div id='inputfield'>
+      <i class='fa fa-search icon-search'></i>
+      <input id="search-by" autocomplete='off' autocorrect='off' name='address' placeholder="{{T "Search-placeholder"}}"
+       spellcheck='false' type='text'>
+    </div>
+  </div>
+</div>
+{{- if (eq .Site.Params.Search.type "lunr") }}
+    <script type="text/javascript">
+      {{ if .Site.IsMultiLingual }}
+          var baseurl = "{{.Site.BaseURL}}{{.Site.LanguagePrefix}}";
+      {{ else }}
+          var baseurl = "{{.Site.BaseURL}}";
+      {{ end }}
+    </script>
+    <script type="text/javascript" src="{{"lib/search/lunr/lunr.js" | relURL}}"></script>
+    <script type="text/javascript" src="{{"lib/search/lunr/auto-complete.js" | relURL}}"></script>
+    <script type="text/javascript" src="{{"lib/search/lunr/search.js" | relURL}}"></script>
+  {{- else }}
+    <script type="text/javascript">
+      var lagoliaIndex = "{{.Site.Params.Search.index}}"
+      var lagoliaAppID = "{{.Site.Params.Search.appID}}"
+      var lagoliaSearchKey = "{{.Site.Params.Search.searchKey}}"
+    </script>
+    <script src="//cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+    <script type="text/javascript" src="{{"lib/search/algolia/search-bar.js" | relURL}}"></script>
+  {{- end}}
+{{- end}}
+
 <nav class="site-navbar">
   <ul id="menu" class="menu">
     {{ range .Site.Menus.main -}}
@@ -17,4 +63,3 @@
     {{- end }}
   </ul>
 </nav>
-
