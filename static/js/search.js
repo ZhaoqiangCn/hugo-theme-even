@@ -31,7 +31,7 @@
   );
 
 
-  $(document).on("click", ".aa-suggestion", function () { 
+  (document).on("click", ".aa-suggestion", function () { 
     var aa = $(this).find("a").attr("href");
     window.location.href = aa;
   })
