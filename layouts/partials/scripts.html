@@ -128,6 +128,9 @@
 
 <!-- custom js -->
 {{ range .Site.Params.customJS -}}
+  <script src="{{ "/js/" | relURL }}{{ . }}"></script>
+{{ end }}
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 
 <!-- jQuery Modal -->
@@ -139,5 +142,3 @@
 
  {{ $res := resources.Get "/js/search.js" }}
 <script src= "{{ $res.RelPermalink }}" type="text/javascript"></script>
-  <script src="{{ "/js/" | relURL }}{{ . }}"></script>
-{{ end }}
